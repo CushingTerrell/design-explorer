@@ -218,6 +218,11 @@ a#copyRightButton {
     float: left;
 }
 
+/*Keep welcome popup from appearing when opening the app*/
+#welcome {
+    display: none !important;
+}
+
 .popupWindow div.col-centered{
     background-color: #ffffff;
     opacity: 1;
