@@ -32,8 +32,9 @@ function calWidthAndHeight() {
     windowHeight = window.innerHeight,
     cleanHeight = windowHeight - 115, // 2
     cleanWidth = windowWidth - 100,
-    graphHeight = (cleanHeight / 3)-24, //remove 22+2 top tool button
-    zoomedHeight = (cleanHeight*2 / 3); //remove 22+2 top tool button
+    graphHeight = (windowHeight - 109) * 0.5 - 50;
+    zoomedHeight = cleanHeight - graphHeight;
+
 
 }
 
