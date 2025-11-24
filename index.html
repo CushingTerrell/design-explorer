@@ -345,11 +345,13 @@
                                     <button id="keep" class="btn btn-default btn-xs">Zoom to Selection</button>
                                     <button id="savecsv" class="btn btn-default btn-xs" onclick="saveToCSV()">Save Selection to File</button>
                                     <button id="stilllink" class="btn btn-default btn-xs" onclick="showStillLink()">My Static Link</button>
+                                    <!--
                                     <a class="btn btn-default btn-xs" href="http://www.mpendesign.com/category/tutorial/" target="_blank">Tutorial</a>
                                     <a class="btn btn-default btn-xs" href="https://www.thorntontomasetti.com/services/sustainability/" target="_blank">Services</a>
                                     <a href="https://github.com/tt-acm/DesignExplorer/wiki" class="btn btn-default btn-xs" target="_blank">
                                         Info <span class="glyphicon glyphicon-new-window"></span>
                                     </a>
+                                    -->
 
                                     <!-- Change label size -->
                                     <div class="btn-group col-xs-3" style="width: auto;float: right;">
@@ -1331,10 +1333,12 @@
         function reDrawPcChart () { 
             calWidthAndHeight();
 
-            var newGraphWidth = windowWidth*0.75-30; // (col-lg-9 x0.73) - (boside padding 15*2)
-            // var newGraphWidth = windowWidth-scatterWidth-90;
+            // Get the actual width of the wrapper div (#PcChartWrapper)
+            var containerWidth = d3.select("#PcChartWrapper").node().getBoundingClientRect().width;
+            var newGraphWidth = containerWidth - 30;
             var newGraphHeight = graphHeight;
 
+            /* // No longer needed
             if (newGraphHeight< scatterHeight) {
                 newGraphHeight = newGraphHeight;
             }
@@ -1348,7 +1352,7 @@
             if(windowWidth<1200){
                 newGraphWidth = windowWidth-30;
             }
-
+            */
             resizePcChart(newGraphWidth,newGraphHeight);
 
             var zoomedAreaHeight = d3.select("#zoomedArea").style("height").replace("px", "");
@@ -1923,10 +1927,9 @@
                         });
 
                     
-
-                    d3.select("#PcChartWrapper")
-                    .classed("col-lg-9", !isLeftChartFullScreenToggled)
-                    .classed("col-lg-12", isLeftChartFullScreenToggled);
+                    //d3.select("#PcChartWrapper")
+                    //.classed("col-lg-9", !isLeftChartFullScreenToggled)
+                    //.classed("col-lg-12", isLeftChartFullScreenToggled);
 
                     if (isLeftChartFullScreenToggled) {
                         var newpcHeight = (windowHeight - 109) * 0.5-50;
