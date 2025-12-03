@@ -1,7 +1,8 @@
 
 body {
-    font-family: sans-serif;
+    font-family: 'Roboto', 'Segoe UI', sans-serif;
     font-size: 12px;
+    color: #003d4c;
 }
 
 .modal-content, #viewer2d, #viewer3d{
@@ -10,7 +11,7 @@ body {
 
 input {
     display: inline-block;
-    font-family: sans-serif;
+    font-family: inherit;
     font-size: 12px;
 }
 
@@ -360,4 +361,15 @@ g.cell text {
 
 text.label {
     transform: translateY(-12px);
+}
+
+#showLoadData {
+    background-color: #003d4c;     /* button background */
+    color: white;                  /* text color */
+    font-size: 13px;               /* font size */
+    font-weight: 600;              /* optional: boldish */
+    padding: 6px 12px;             /* button padding */
+    border-radius: 20px;           /* your original rounded corners */
+    border: none;                  /* cleaner look */
+    cursor: pointer;               /* pointer cursor */
 }

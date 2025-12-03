@@ -290,7 +290,7 @@ function loadFromUrl(rawUrl) {
 }
 
 // Start size in pixels (tweak to taste)
-var labelFontSize = 14;
+var labelFontSize = 13;
 
 // Apply current font size to all axis labels
 function applyLabelFontSize() {
