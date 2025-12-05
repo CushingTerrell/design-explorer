@@ -535,9 +535,11 @@
                         </h5>
                     </div>
                 </div>
+            </div>
 
-                <!--load data div-->
-                <div class="col-sm-12 col-centered" id="loadDataContainer" style=" display:none;width: 700px;height: 500px">
+            <!--load data div-->
+            <div class="row-fluid col-lg-12 row-centered vertical-center fullscreen popupWindow" id="loadDataOverlay"  style="display:none;">
+                <div class="col-sm-12 col-centered" id="loadDataContainer" style="width: 700px;height: 500px">
                     <button class="btn btn-default btn-sm pull-right popupWindowClose">
                         <span class="glyphicon glyphicon-remove"></span>
                     </button>
@@ -565,8 +567,8 @@
                     </div>
                     
                 </div>
-
             </div>
+            
 
             <!--show static link-->
             <!-- Modal -->
@@ -2079,14 +2081,14 @@
             d3.select("#showLoadData")
                 .on("click", function () {
 
-                    d3.select("#welcome")
+                    //d3.select("#welcome")
+                    //    .style("display", "flex");
+
+                    //d3.select("#welcomeContainer")
+                    //    .style("display", "none");
+
+                    d3.select("#loadDataOverlay")
                         .style("display", "flex");
-
-                    d3.select("#welcomeContainer")
-                        .style("display", "none");
-
-                    d3.select("#loadDataContainer")
-                        .style("display", "block");
                     
                     d3.select("#loadFileLocally").style("display", "block");
                     d3.select("#showStaticLink").classed("Show",false);
