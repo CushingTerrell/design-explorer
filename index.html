@@ -158,8 +158,6 @@
             }
 
             //updateLayoutOnDeselect();
-
-            //d3.select("#welcome").style("display", "none");
         } else {
             alert("You have to put Google Drive Folder information first!");
         }
@@ -236,8 +234,6 @@
 
         //valid online folder available
         var studyLongUrl = `${document.location.origin}/${appName}/?ID=${studyCaseLink}`;
-        d3.select("#welcome").style("display","none");
-        
         
         makeUrlId(studyLongUrl, function name(UrlId) {
             _folderInfo.DE_PW = UrlId;
@@ -491,35 +487,6 @@
 
                 </div>
             </div>
-            <!-- /#Welcome content -->
-            <div class="row-fluid col-lg-12 row-centered vertical-center fullscreen popupWindow" id="welcome">
-                <div class="col-sm-12 col-centered" id="welcomeContainer">
-                    <button class="btn btn-default btn-sm pull-right popupWindowClose">
-                        <span class="glyphicon glyphicon-remove"></span>
-                    </button>
-                    <br>
-                    <h1 class="text-center" style="margin-top: 1em;"> Welcome to Design Explorer!</h1>
-                    <h4 class="text-center">
-                        Design Explorer is an open source tool for exploring multi-dimensional parametric studies.
-                    </h4>
-                    <br>
-
-                    <h5 class="text-center">Try one of following sample design sets or load your own data:</h5> 
-                    <br>
-                    <br>
-                    <div class="row">
-                        <div class="col-sm-4">
-                            <img src="img/RedBox.gif" class="sampleImage image-rounded" id="sample1">
-                        </div>
-                        <div class="col-sm-4">
-                            <img src="img/Daylighting.gif" class="sampleImage image-rounded" id="sample2">
-                        </div>
-                        <div class="col-sm-4">
-                            <img src="img/BoxBuilding.gif" class="sampleImage image-rounded" id="sample3">
-                        </div>
-                    </div>
-                </div>
-            </div>
 
             <!--load data div-->
             <div class="row-fluid col-lg-12 row-centered vertical-center fullscreen popupWindow" id="loadDataOverlay"  style="display:none;">
@@ -664,43 +631,6 @@
             // remove the button so sliders are hidden
             d3.selectAll("button#menu-toggle").remove();
         }
-
-    </script>
-
-    <!-- welcome div  -->
-    <script type="text/javascript">
-        sampleFiles = {
-            1: "design_explorer_data/LittleRedBox.csv",
-            2: "design_explorer_data/default_onload.csv",
-            3: "design_explorer_data/AIA building.csv"
-        };
-
-        sampleSettingFiles = {
-            1: "design_explorer_data/RedBox/settings.json",
-            2: "design_explorer_data/DefaultData/settings.json",
-            3: "design_explorer_data/AIAbuilding/settings.json"
-        };
-
-        d3.selectAll(".sampleImage")
-            .on("click", function () {
-                var selSample = d3.select(this);
-                var id = selSample[0][0].id.replace("sample", "");
-
-                var filePath = sampleFiles[id];
-                var settingFilePath =sampleSettingFiles[id];
-
-                // remove the current selection
-                unloadPageContent();
-
-                d3.select("div#welcome").style("display", "none");
-
-                // load the new file
-                d3.csv(filePath, function (data) {
-                    loadDataToDesignExplorer(data);
-                    loadSetting(settingFilePath);
-                    });
-
-            });
 
     </script>
 
@@ -2043,7 +1973,6 @@
             
             if (window.location.href.toUpperCase().search("GFOLDER") > 0 || window.location.href.toUpperCase().search("ID=") > 0) {
                 // this is old user with google drive files.
-                d3.select("#welcome").style("display", "none");
                 MP_getGoogleIDandLoad("URL");
             } else {
                 // load default data
@@ -2064,12 +1993,6 @@
 
             d3.select("#showLoadData")
                 .on("click", function () {
-
-                    //d3.select("#welcome")
-                    //    .style("display", "flex");
-
-                    //d3.select("#welcomeContainer")
-                    //    .style("display", "none");
 
                     d3.select("#loadDataOverlay")
                         .style("display", "flex");
@@ -2129,7 +2052,6 @@
                 }
 
                 reader.readAsText(file);
-                d3.select("#welcome").style("display", "none");
             });
 
         }; // end of window.onload

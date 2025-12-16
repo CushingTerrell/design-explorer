@@ -170,17 +170,6 @@ rect.disabled {
     visibility: hidden;
 }
 
-.sampleImage {
-    width: 100%;
-    cursor: pointer;
-}
-
-.sampleImage:hover img {
-    border-color: black;
-    border-width: .2em solid;
-}
-
-
 .file-upload {
     position: relative;
     overflow: hidden;
@@ -212,16 +201,6 @@ a#copyRightButton {
 .popupWindow, 
 .modal-backdrop{
     background-color: rgba(0, 0, 0, 0.30);
-}
-
-#welcomeContainer .col-sm-4 {
-    width: 33.33333333%;
-    float: left;
-}
-
-/*Keep welcome popup from appearing when opening the app*/
-#welcome {
-    display: none !important;
 }
 
 .popupWindow div.col-centered{
