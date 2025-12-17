@@ -385,36 +385,7 @@
 
                         <!-- start of right side charts-->
 
-                        <div id="ScChartWrapper" class="col-lg-3">
-
-                            <div class="row-fluid">
-                                <div id="rightTopButtonGroup" class="btn-group col-xs-12">
-                                    <button type="button" class="btn btn-default btn-xs" id="scatter-fullscreen-toggle" title="Full Screen">
-                                        <span class="glyphicon glyphicon-triangle-left" aria-hidden="true"></span>
-                                    </button>
-                                    <a id="copyRightButton" href="http://core.thorntontomasetti.com/" class="btn btn-default btn-xs" target="_blank" style="width: calc(100% - 46px);">
-                                        &copy; 2019 Thornton Tomasetti
-                                    </a>
-                                    <!--<button type="button" class="btn btn-default btn-xs" id="rcgraph" data-toggle="collapse" data-target="#radarChart">
-                                        <span class="glyphicon glyphicon-triangle-bottom" aria-hidden="true"></span>
-                                    </button>-->
-                                    <button type="button" class="btn btn-default btn-xs" id="scatter-menu-toggle" title="Show Dimensions">
-                                        <span class="glyphicon glyphicon-triangle-right" aria-hidden="true"></span>
-                                    </button>
-                                </div>
-                            </div>
-
-                            <div class="row chartSide">
-
-                                <div id="radarChart" class="col-lg-12 collaps in center-block" style="font-size:14px; font-weight:bold">
-                                    <!-- // <h5>Radar Chart Place Holder</h5> -->
-                                </div>
-                                <!--<div id="scatterChart" class="col-lg-12 collaps in center-block">
-                                        place holder for the scatterChart
-                                </div>-->
-                            </div>
-
-                        </div>
+                        
 
 
                     </div>
@@ -634,91 +605,6 @@
 
     </script>
 
-    <!-- right side chart -->
-    <script type="text/javascript">
-        // update radar chart
-        var scatterChart;
-
-        // add scatter chart
-        function addScatterChart() {
-            var pcHeight = d3.select("#graph").style("height").replace("px", "");
-            var rightChartWidth = d3.select("#radarChart").style("width").replace("px", "");
-            var selectedData;
-            if (graph.brushed().length > 0) {
-                selectedData = graph.brushed();
-            } else {
-                selectedData = graph.data();
-
-            }
-            var sm = new ScatterMatrix("", selectedData, '#radarChart');
-            sm.cellSize((pcHeight - 60) / 2);
-            sm.render();
-
-            // adjust the chart style
-            //var chartWidth = d3.select(".scatter-matrix-svg svg").style("width").replace("px", "");
-            d3.select(".scatter-matrix-svg")
-                .style("width", pcHeight - 10 + "px");
-
-            d3.select(".scatter-matrix-control")
-                .style("height", pcHeight - 30 + "px");
-            
-            scatterChart = sm;
-
-            //return sm;
-
-        }
-
-        //unique id for each Circle
-        function getCircleID(d) {
-            var id;
-            var keys = d3.keys(graph.data()[0]);
-        
-            keys.forEach(function(key) {
-                id = "scatter_" + cleanString(d[key].toString());
-            });
-        
-            return id;
-        }
-
-        function updateScatterChart() {
-            var data = graph.brushed().length > 0 ? graph.brushed() : graph.data();
-
-            d3.selectAll(".cell circle")
-                .classed("faded", false)
-                .attr("visibility", "hidden");
-
-            data.forEach(function (d) {
-                d3.selectAll("#" + getCircleID(d)).attr("visibility", "shown");
-            });
-
-        }
-
-        function highlightScatterDot() {
-            var data = graph.highlighted();
-            if (data.length > 0) {
-
-                d3.selectAll(".cell circle")
-                    .classed("faded", true);
-
-                unlighlightScatter();
-
-                data.forEach(function (d) {
-                    d3.selectAll("#" + getCircleID(d))
-                        .classed("highlighted", true);
-                });
-
-            }
-
-        }
-
-        function unlighlightScatter() {
-            d3.selectAll(".cell circle")
-                .classed("highlighted", false);
-
-        }
-
-    </script>
-
     <!-- Dynamic Divs script -->
     <script>
         var isAnyItemSelected = false;
@@ -737,59 +623,7 @@
             d3.select("#wrapper")
                 .classed("toggled", isToggled)
                 .transition().duration(300); //length of toggle animation
-            //.each("end", resizeRadarChart())
         });
-
-
-        $("#scatter-menu-toggle, .scatter-matrix-control").click(function (e) {
-
-            isScatterToggled = !isScatterToggled;
-            d3.select(".scatter-matrix-control")
-                .classed("toggled", isScatterToggled);
-        });
-
-
-        //--------------------------------------------------set right side chart full screen -----------------------------------//
-
-        var divWidth = d3.select("#ScChartWrapper").style("width").replace("px", "");
-
-        $("#scatter-fullscreen-toggle").click(function (e) {
-            isRightChartFullScreenToggled = !isRightChartFullScreenToggled;
-
-            d3.selectAll(
-                    "#ScChartWrapper," +
-                    ".chartSide,"+
-                    ".col-lg-3 .row-fluid,"+
-                    ".thumbnailSide,"+
-                    "#copyRightButton, "+
-                    ".scatter-matrix-container circle,"+
-                    " #PcChartWrapper, "+
-                    "#thumbnails-btm_container, "+
-                    "#thumbnails-btm_container #thumbnails-btm, "+
-                    " #zoomedArea"
-                )
-                .classed("rightChartFullScreenToggled", isRightChartFullScreenToggled);
-
-            if (isRightChartFullScreenToggled) {
-                //var newDim =  windowHeight - 200;
-                d3.select("#thumbnails-btm_container").style("height", cleanHeight + "px");
-            } else {
-                d3.select("#thumbnails-btm_container").style("height", zoomedHeight+"px");
-            }
-
-
-        });
-
-        function resizeScChart(newWidth, newHeight) {
-
-
-            d3.select(".scatter-matrix-svg") // for centering the chart
-                .style("width", newWidth + "px");
-
-            d3.select(".scatter-matrix-control")
-                .style("height", newHeight + "px");
-        }
-
 
 
         // update layout on select
@@ -844,10 +678,6 @@
             //highlight the radar chart  //-----TODO:here needs a switch for different charts-------
             //rc.highlight(selectedImage.data());
             highlightScatterDot();
-
-
-            // var radarHeight = d3.select("#radarChart")
-            //     .style("height").replace("px", "");
 
             // let's side thumbnail show up
             d3.select("#thumbnails-side_container")
@@ -970,9 +800,6 @@
             //rc.unhighlight();
             unlighlightScatter();
 
-            //show radar chart
-            $("#radarChart").collapse("show");
-
             isAnyItemSelected = false;
         }
 
@@ -987,9 +814,6 @@
                 d3.select("#graph")
                     .attr("class", "parcoords collapse 2s")
                     .style("height", "0px");
-
-                //mirror collapse behavior with radar chart
-                $("#radarChart").collapse("hide");
 
                 //disable buttons
                 d3.select("#reset").classed("disabled", true);
@@ -1015,10 +839,6 @@
                     .transition("ease out").attr("class", "parcoords collapse in")
                     .style("height", pcHeight + "px");
                 
-
-                 //mirror collapse behavior with radar chart
-                $("#radarChart").collapse("show");
-
                 //enable buttons
                 d3.select("#reset").classed("disabled", false);
                 d3.select("#remove").classed("disabled", false);
@@ -1250,7 +1070,6 @@
             .range(["#3182bd", "#f33"]);
 
 
-        var scatterHeight = d3.select("#ScChartWrapper").style("height").replace("px", "");
         window.addEventListener("resize", reDrawPcChart);
 
         //redraw the charts when window size changes
@@ -1707,8 +1526,6 @@
         function setupEvents() {
             // brushing events for parallel coordinates graph
             graph.on("brush", function (d) {
-                //rc.updateData(graph.brushed());   //-----TODO:here needs a switch for different charts-------
-                updateScatterChart();
                 updateImageGrid(d, false);
                 drawTable(d);
             });
@@ -1779,8 +1596,6 @@
                 graph.data(newData).brushReset().render().interactive().reorderable();
                 graph.updateAxes();
                 applyLabelFontSize();
-                //updateRadarChart();                   //-----TODO:here needs a switch for different charts-------
-                updateScatterChart();
                 updateLayoutOnDeselect();
                 updateImageGrid(newData, false);
                 updateSlidersTickValues(newData);
@@ -1918,12 +1733,6 @@
 
             // draw parallel coordinates graph
             drawParallelCoordinates();
-
-            //draw radar chart
-            //updateRadarChart();                //-----TODO:here needs a switch for different charts-------
-
-            //draw scatter chart
-            addScatterChart();
 
             // set color change
             // set the initial coloring based on the 3rd column

@@ -12,7 +12,6 @@ function unloadPageContent() {
     d3.select("#inputSliders").append("form").attr("class", "sliders"); // append a form
 
     d3.select("div#graph").selectAll("*").remove(); //remove left side parallel coord graph
-	d3.select("div#radarChart").selectAll("*").remove(); //remove right side graph
 
     d3.select("div#thumbnails-btm_container").select("div#sorting").selectAll("*").remove(); // remove sorting drop-down
     d3.select("div#thumbnails-btm_container").select("div#sorting").text("");

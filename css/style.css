@@ -218,18 +218,6 @@ a#copyRightButton {
     
 }
 
-#ScChartWrapper {
-    background-color: white;
-    display: none !important; /*hiding right chart area*/
-}
-
-#ScChartWrapper.rightChartFullScreenToggled{
-    width: 75%;
-    left: 15px;
-    z-index: 9;
-    position: absolute;
-}
-
 .col-lg-3 .chartSide.rightChartFullScreenToggled, 
 .col-lg-3 .row-fluid.rightChartFullScreenToggled{
     width: 100%;
