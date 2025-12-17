@@ -288,41 +288,23 @@ function loadFromUrl(rawUrl) {
     })
 }
 
-// Start size in pixels (tweak to taste)
+// Start size in pixels
 var labelFontSize = 13;
 
-// Apply current font size to all axis labels
 function applyLabelFontSize() {
     d3.selectAll("text.label")
         .style("font-size", labelFontSize + "px");
 }
 
-// Change label size by a step (direction: +1 or -1)
 function stepLabelSize(direction) {
-    // How much to change per click (px)
     var step = 1;
 
     labelFontSize += direction * step;
 
-    // Clamp to a reasonable range
     if (labelFontSize < 10)  labelFontSize = 10;
     if (labelFontSize > 18) labelFontSize = 18;
 
     applyLabelFontSize();
-}
-
-//old function
-function changeLabelSize(size) {
-    if (size == "largeLabel") {
-        d3.selectAll(".label")
-            .style("font-size", "95%");
-    } else if (size == "mediumLabel") {
-        d3.selectAll(".label")
-            .style("font-size", "85%");
-    } else if (size == "smallLabel") {
-        d3.selectAll(".label")
-            .style("font-size", "75%");
-    }
 }
 
 function checkInputLink(link, callback){
