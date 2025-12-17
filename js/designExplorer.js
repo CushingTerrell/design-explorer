@@ -12,7 +12,6 @@ function unloadPageContent() {
     d3.select("#inputSliders").append("form").attr("class", "sliders"); // append a form
 
     d3.select("div#graph").selectAll("*").remove(); //remove left side parallel coord graph
-	d3.select("div#radarChart").selectAll("*").remove(); //remove right side graph
 
     d3.select("div#thumbnails-btm_container").select("div#sorting").selectAll("*").remove(); // remove sorting drop-down
     d3.select("div#thumbnails-btm_container").select("div#sorting").text("");
@@ -32,8 +31,9 @@ function calWidthAndHeight() {
     windowHeight = window.innerHeight,
     cleanHeight = windowHeight - 115, // 2
     cleanWidth = windowWidth - 100,
-    graphHeight = (cleanHeight / 3)-24, //remove 22+2 top tool button
-    zoomedHeight = (cleanHeight*2 / 3); //remove 22+2 top tool button
+    graphHeight = (windowHeight - 109) * 0.5 - 50;
+    zoomedHeight = cleanHeight - graphHeight;
+
 
 }
 
@@ -288,17 +288,23 @@ function loadFromUrl(rawUrl) {
     })
 }
 
-function changeLabelSize(size) {
-    if (size == "largeLabel") {
-        d3.selectAll(".label")
-            .style("font-size", "95%");
-    } else if (size == "mediumLabel") {
-        d3.selectAll(".label")
-            .style("font-size", "85%");
-    } else if (size == "smallLabel") {
-        d3.selectAll(".label")
-            .style("font-size", "75%");
-    }
+// Start size in pixels
+var labelFontSize = 13;
+
+function applyLabelFontSize() {
+    d3.selectAll("text.label")
+        .style("font-size", labelFontSize + "px");
+}
+
+function stepLabelSize(direction) {
+    var step = 1;
+
+    labelFontSize += direction * step;
+
+    if (labelFontSize < 10)  labelFontSize = 10;
+    if (labelFontSize > 18) labelFontSize = 18;
+
+    applyLabelFontSize();
 }
 
 function checkInputLink(link, callback){

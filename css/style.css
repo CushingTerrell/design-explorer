@@ -1,7 +1,8 @@
 
 body {
-    font-family: sans-serif;
+    font-family: 'Roboto', 'Segoe UI', sans-serif;
     font-size: 12px;
+    color: #003d4c;
 }
 
 .modal-content, #viewer2d, #viewer3d{
@@ -10,7 +11,7 @@ body {
 
 input {
     display: inline-block;
-    font-family: sans-serif;
+    font-family: inherit;
     font-size: 12px;
 }
 
@@ -169,17 +170,6 @@ rect.disabled {
     visibility: hidden;
 }
 
-.sampleImage {
-    width: 100%;
-    cursor: pointer;
-}
-
-.sampleImage:hover img {
-    border-color: black;
-    border-width: .2em solid;
-}
-
-
 .file-upload {
     position: relative;
     overflow: hidden;
@@ -213,11 +203,6 @@ a#copyRightButton {
     background-color: rgba(0, 0, 0, 0.30);
 }
 
-#welcomeContainer .col-sm-4 {
-    width: 33.33333333%;
-    float: left;
-}
-
 .popupWindow div.col-centered{
     background-color: #ffffff;
     opacity: 1;
@@ -231,17 +216,6 @@ a#copyRightButton {
     min-width: 560px;
     padding: 2em;
     
-}
-
-#ScChartWrapper {
-    background-color: white;
-}
-
-#ScChartWrapper.rightChartFullScreenToggled{
-    width: 75%;
-    left: 15px;
-    z-index: 9;
-    position: absolute;
 }
 
 .col-lg-3 .chartSide.rightChartFullScreenToggled, 
@@ -351,3 +325,18 @@ g.cell text {
 }
 
 .col-0 { width: 180px; }
+
+text.label {
+    transform: translateY(-12px);
+}
+
+#showLoadData {
+    background-color: #003d4c;
+    color: white;
+    font-size: 13px;
+    font-weight: 600;
+    padding: 6px 12px;
+    border-radius: 20px;
+    border: none;
+    cursor: pointer;
+}
