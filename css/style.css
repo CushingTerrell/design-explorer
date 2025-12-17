@@ -331,12 +331,12 @@ text.label {
 }
 
 #showLoadData {
-    background-color: #003d4c;     /* button background */
-    color: white;                  /* text color */
-    font-size: 13px;               /* font size */
-    font-weight: 600;              /* optional: boldish */
-    padding: 6px 12px;             /* button padding */
-    border-radius: 20px;           /* your original rounded corners */
-    border: none;                  /* cleaner look */
-    cursor: pointer;               /* pointer cursor */
+    background-color: #003d4c;
+    color: white;
+    font-size: 13px;
+    font-weight: 600;
+    padding: 6px 12px;
+    border-radius: 20px;
+    border: none;
+    cursor: pointer;
 }
