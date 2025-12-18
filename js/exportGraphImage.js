@@ -212,7 +212,7 @@
     }
 
     // Download
-    const filename = "parallel_coordinates.png";
+    const filename = "Design Explorer Chart.png";
     downloadDataUrl(out.toDataURL("image/png"), filename);
   }
 
