@@ -340,3 +340,17 @@ text.label {
     border: none;
     cursor: pointer;
 }
+
+.btn-icon-only {
+  height: 22px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-icon-only .btn-icon {
+  font-size: 20px;
+  line-height: 1;
+  display: block;
+}
+
